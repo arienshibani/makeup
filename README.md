@@ -1,26 +1,30 @@
-# makeup 💅
-
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+## 💄 makeup: Run Your Root Makefile from Anywhere
 
-`makeup` is a tiny ZSH plugin that lets you run your project’s root-level `Makefile` from any subdirectory. Simply type `make` (or `make <target>`), and it will climb parent folders until it finds your `Makefile`, run the real `make` there, then return you to your original directory.
+### The Problem  
+Ever find yourself deep inside a project tree, furiously typing `cd ../../..` just to run `make`? You peek at your prompt, realize you forgot to switch back, and—ugh—repeat. It’s a workflow speed bump that never stops.
 
----
-
-## Features
-
-- 🚀 **Zero-config**: drop it in your Zsh setup, and you’re good to go.
-- 🔍 **Smart lookup**: automatically finds the nearest `Makefile` in any parent directory.
-- 🔄 **Automagical**: runs the real `make` for you—no aliases to remember or CD-ing around.
+### The Solution  
+**makeup** to the rescue! A tiny Zsh plugin that magically climbs up your directory hierarchy, finds the nearest `Makefile`, runs your `make` command there, and drops you right back where you started. No aliases, no manual `cd`, no sweat.
 
 ---
 
-## Installation
+## 🚀 Why You’ll Love It
 
-### With [Oh My Zsh](https://ohmyz.sh/)
+- **Zero-config**  
+  Clone it, enable it, and forget it.  
+- **Smart Lookup**  
+  Hops upward until it spies a `Makefile`.  
+- **Full Transparency**  
+  It invokes the real `make`—so all your targets (and your sanity) remain intact.  
+
+---
+
+## 🔧 Installation
+
+### With Oh My Zsh
 
 ```bash
 git clone https://github.com/you/makeup \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/makeup
-# add "makeup" to your ~/.zshrc plugins=(… makeup)
-```
