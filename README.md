@@ -32,7 +32,7 @@ hello:
 
 and your project structure looks like this:
 
-```
+```txt
 /home/you/project
 ├── Makefile
 ├── src
@@ -44,6 +44,7 @@ and your project structure looks like this:
 │       └── file.txt
 └── README.md
 ```
+
 You can run `make` from anywhere in the project tree, even deep inside a subdirectory:
 
 ```bash
