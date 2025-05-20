@@ -1,0 +1,54 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Shell-related
+# (e.g. caching, history)
+*.cache/
+*.hist
+*.tmp
+
+# Swap / backup files
+*~
+*.sw?
+*.bak
+
+# Logs
+*.log
+
+# Test artifacts
+coverage/
+*.tap
+tmp/
+test-output/
+
+# Build / dist (if you ever add build steps)
+build/
+dist/
+
+# Homebrew formula repo (if you keep it here)
+*.tar.gz
+*.gem
+
+# Node / JS (if you ever add a JS-based helper)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Python (if you ever add scripts/tests)
+__pycache__/
+*.py[cod]
