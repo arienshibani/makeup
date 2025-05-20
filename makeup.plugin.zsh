@@ -1,14 +1,32 @@
-# makeup.plugin.zsh — Zsh plugin entrypoint for "makeup"
+# makeup.plugin.zsh
+# Zsh plugin to search upwards for the nearest Makefile and run make there, then return to the original directory.
 
-# Determine the directory this file lives in
-# ${(%):-%N} is the name of the current script; :h gives its directory
-local makeup_plugin_dir="${0:a:h}"
+function make() {
+  # Save the arguments and starting directory
+  local args=("$@")
+  local start_dir="$PWD"
+  local dir="$PWD"
 
-# Path to the helper script
-local makeup_script="$makeup_plugin_dir/bin/makeup"
+  # Climb up until we find a Makefile or reach root
+  while [[ ! -e "$dir/Makefile" && "$dir" != "/" ]]; do
+    # Indicate climbing up
+    echo "🧗 cd .."
+    dir=$(dirname "$dir")
+  done
 
-# Override the `make` command in Zsh
-make() {
-  # Delegate to our wrapper script, passing through all arguments
-  "$makeup_script" "$@"
+  if [[ -e "$dir/Makefile" ]]; then
+    # Change to directory containing Makefile and run the real make
+    cd "$dir" || return
+    command make "${args[@]}"
+    # Capture exit status in a writable variable
+    local exit_status
+    exit_status=$?
+    # Return to original directory
+    cd "$start_dir" || return
+    return $exit_status
+  else
+    # No Makefile found
+    echo "make: No Makefile found in any parent directory." >&2
+    return 1
+  fi
 }

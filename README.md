@@ -1,26 +1,64 @@
-# makeup 💅
+# Makeup 💄
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![CI](https://github.com/you/makeup/actions/workflows/ci.yml/badge.svg)](https://github.com/you/makeup/actions)
+A tiny ZSH plugin that climbs up your directory hierarchy until it finds the closest `Makefile`, runs `make` there, then drops you right back where you started.
 
-`makeup` is a tiny ZSH plugin that lets you run your project’s root-level `Makefile` from any subdirectory. Simply type `make` (or `make <target>`), and it will climb parent folders until it finds your `Makefile`, run the real `make` there, then return you to your original directory.
+## 💅 Why
 
----
+Ever find yourself deep inside a project tree, typing `cd ../../..` just to run the root `make`? Makeup lets you run `make` from any subfolder without manual navigation.
 
-## Features
+## 🔧 Installation
 
-- 🚀 **Zero-config**: drop it in your Zsh setup, and you’re good to go.
-- 🔍 **Smart lookup**: automatically finds the nearest `Makefile` in any parent directory.
-- 🔄 **Automagical**: runs the real `make` for you—no aliases to remember or CD-ing around.
-
----
-
-## Installation
-
-### With [Oh My Zsh](https://ohmyz.sh/)
+### 1. Clone the plugin
 
 ```bash
-git clone https://github.com/you/makeup \
-  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/makeup
-# add "makeup" to your ~/.zshrc plugins=(… makeup)
+
+git clone https://github.com/you/makeup ~/makeup
+```
+
+### 2. Add it to your `.zshrc`
+
+```bash
+source ~/makeup/makeup.plugin.zsh
+```
+
+## 🚀 Usage
+
+Let's say you have this `makefile` in your root directory:
+
+```makefile
+hello:
+  @echo "Hello, world!"
+```
+
+and your project structure looks like this:
+
+```
+/home/you/project
+├── Makefile
+├── src
+│   ├── module
+│   │   ├── subdir
+│   │   │   └── file.txt
+│   │   └── another_file.txt
+│   └── another_module
+│       └── file.txt
+└── README.md
+```
+You can run `make` from anywhere in the project tree, even deep inside a subdirectory:
+
+```bash
+
+# Nowhere near the Makefile
+$ cd src/module/subdir
+
+# Starts seraching upwards for any Makefile
+$ make hello
+🧗 cd ..
+🧗 cd ..
+🧗 cd ..
+Hello, world!
+
+# Makeup returns you to your original directory 👍
+$ pwd
+/home/you/project/src/module/subdir
 ```
