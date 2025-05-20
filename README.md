@@ -3,7 +3,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/you/makeup/actions/workflows/ci.yml/badge.svg)](https://github.com/you/makeup/actions)
 
-`makeup` is a tiny Zsh plugin that lets you run your project’s root-level `Makefile` from any subdirectory. Simply type `make` (or `make <target>`), and it will climb parent folders until it finds your `Makefile`, run the real `make` there, then return you to your original directory.
+`makeup` is a tiny ZSH plugin that lets you run your project’s root-level `Makefile` from any subdirectory. Simply type `make` (or `make <target>`), and it will climb parent folders until it finds your `Makefile`, run the real `make` there, then return you to your original directory.
 
 ---
 
