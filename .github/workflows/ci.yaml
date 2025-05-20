@@ -1,0 +1,42 @@
+# .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint with ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck
+        run: |
+          shellcheck bin/makeup
+          shellcheck makeup.plugin.zsh
+
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Ensure scripts are executable
+        run: |
+          chmod +x bin/makeup
+          chmod +x tests/test_makeup.sh
+
+      - name: Run integration tests
+        run: |
+          # Run your test script; it should exit non-zero on failure
+          bash tests/test_makeup.sh

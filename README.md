@@ -9,9 +9,9 @@
 
 ## Features
 
-- 🚀 **Zero-config**: drop it in your Zsh setup, and you’re good to go.  
-- 🔍 **Smart lookup**: automatically finds the nearest `Makefile` in any parent directory.  
-- 🔄 **Automagical**: runs the real `make` for you—no aliases to remember or CD-ing around.  
+- 🚀 **Zero-config**: drop it in your Zsh setup, and you’re good to go.
+- 🔍 **Smart lookup**: automatically finds the nearest `Makefile` in any parent directory.
+- 🔄 **Automagical**: runs the real `make` for you—no aliases to remember or CD-ing around.
 
 ---
 
@@ -23,3 +23,4 @@
 git clone https://github.com/you/makeup \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/makeup
 # add "makeup" to your ~/.zshrc plugins=(… makeup)
+```
