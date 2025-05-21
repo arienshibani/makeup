@@ -47,7 +47,7 @@ $
 
 ## 🔧 Installation
 
-This plugin is still under development. You can clone it, and source it manually if you want to test it.
+This plugin is still under development. To test it:
 
 ### 1. Clone the plugin
 
@@ -55,7 +55,7 @@ This plugin is still under development. You can clone it, and source it manually
 git clone https://github.com/you/makeup ~/makeup
 ```
 
-### 2. Add it to your `.zshrc`
+### 2. Source it in your Zsh session
 
 ```bash
 source ~/makeup/makeup.plugin.zsh
