@@ -1,17 +1,25 @@
 # Makeup 💄
 
-Ever find yourself deep inside a project tree, furiously typing `cd ../../..` just to run the root `make` commands?  Makeup is A tiny ZSH plugin that climbs up your directory hierarchy until it finds the closest `Makefile`, runs the targeted command if it exists, then drops you right back where you started.
+Ever find yourself deep inside a project tree, furiously typing `cd ../../..` just to run a `make` command somewhere far away from your working directory?  
 
 ## 💅 Usage
+Makeup is a tiny Zsh plugin that wraps your `make` command. When you invoke `make`, it:
 
-Let's say you have a `makefile` in your root directory, with a `hello` command defined within it:
+1. Checks for a `Makefile` in the current folder.  
+2. If none is found, it "climbs" parent directories one level at a time until it locates the nearest `Makefile`.  
+3. Runs the requested target (or the default) in that directory.  
+4. Returns you to your original working directory.
+
+### Example 🔎
+
+Let's say you have a `Makefile` defined at the root of your project.
 
 ```makefile
 hello:
   @echo "Hello, world!"
 ```
 
-With the `makeup` plugin, you can now run that `make hello` command from any subdirectory, deep inside the project 👇
+With the `makeup` plugin, you can now run the `make hello` command from any subdirectory, deep inside the project 👇
 
 ```bash
 # ~/repos/makeup
