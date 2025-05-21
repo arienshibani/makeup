@@ -11,7 +11,7 @@ hello:
   @echo "Hello, world!"
 ```
 
-With the `makeup` plugin, you can now run that `make hello` command even when deep inside a subdirectory 👇
+With the `makeup` plugin, you can now run that `make hello` command from any subdirectory, deep inside the project 👇
 
 ```bash
 # ~/repos/makeup
