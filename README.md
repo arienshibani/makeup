@@ -52,7 +52,7 @@ This plugin is still under development. To test it:
 ### 1. Clone the plugin
 
 ```bash
-git clone https://github.com/you/makeup ~/makeup
+git clone https://github.com/arienshibani/makeup ~/makeup
 ```
 
 ### 2. Source it in your Zsh session
