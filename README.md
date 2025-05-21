@@ -1,6 +1,6 @@
 # Makeup 💄
 
-Ever find yourself deep inside a project tree, furiously typing `cd ../../..` just to run the root `make` commands?  Makeup is A tiny ZSH plugin that climbs up your directory hierarchy until it finds the closest `Makefile`, runs `make` there, then drops you right back where you started.
+Ever find yourself deep inside a project tree, furiously typing `cd ../../..` just to run the root `make` commands?  Makeup is A tiny ZSH plugin that climbs up your directory hierarchy until it finds the closest `Makefile`, runs the targeted command if it exists, then drops you right back where you started.
 
 ## 💅 Usage
 
