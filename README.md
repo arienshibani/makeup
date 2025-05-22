@@ -60,3 +60,25 @@ git clone https://github.com/arienshibani/makeup ~/makeup
 ```bash
 source ~/makeup/makeup.plugin.zsh
 ```
+
+### 3. Configuration
+
+The script supports two environment variables:
+
+```sh
+MAKEUP_CONFIRM=false # true / false Whether you want a prompt which shows you which directory you run it in. The answer is stored in the current terminal session.
+MAKEUP_BASE_DIR="/" # Root directory where the script will give up.
+```
+
+Use as follows:
+
+```sh
+# ~/.zshrc
+
+# Configuration
+export MAKEUP_CONFIRM=true
+export MAKEUP_BASE_DIR="$HOME"
+
+# Load the plugin
+source ~/path/to/makeup.plugin.zsh
+```
