@@ -1,11 +1,6 @@
 # makeup.plugin.zsh
 # Zsh plugin to search upwards for the nearest Makefile and run make there, then return to the original directory.
 
-# Toggle confirmation prompt
-MAKEUP_CONFIRM=false
-# Set a base directory for when to stop searching
-BASE_DIR="/"
-
 # Declare associative array to track confirmed directories
 typeset -gA MAKEUP_CONFIRMED_PATHS
 
@@ -14,15 +9,17 @@ function make() {
   local args=("$@")
   local start_dir="$PWD"
   local dir="$PWD"
+  local confirm="${MAKEUP_CONFIRM:-false}"
+  local base="${MAKEUP_BASE_DIR:-"/"}"
 
   # Climb up until we find a Makefile or reach the base directory
   echo "🔎 Searching..."
-  while [[ ! -e "$dir/Makefile" && "$dir" != "${BASE_DIR}" ]]; do
+  while [[ ! -e "$dir/Makefile" && "$dir" != "$base" ]]; do
     dir=$(dirname "$dir")
   done
 
   if [[ -e "$dir/Makefile" ]]; then
-    if [[ "$MAKEUP_CONFIRM" = true && -z "${MAKEUP_CONFIRMED_PATHS[$dir]}" ]]; then
+    if [[ "$confirm" = true && -z "${MAKEUP_CONFIRMED_PATHS[$dir]}" ]]; then
       local last_part="${dir##*/}"
       local parent_part="${dir%/*}"
       local cyan="\033[0;36m"
