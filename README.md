@@ -1,6 +1,6 @@
 # Makeup 💄
 
-Ever find yourself deep inside a project tree, furiously typing `cd ../../..` just to run a `make` command somewhere far away from your working directory?
+Ever find yourself deep inside a monorepo project tree, furiously typing `cd ../../..` just to run a `make` command somewhere far away from your working directory?
 
 ## 💅 Usage
 
