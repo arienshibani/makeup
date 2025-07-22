@@ -1,0 +1,6 @@
+{
+  "release-type": "simple",
+  "changelog-path": "CHANGELOG.md",
+  "include-v-in-tags": true,
+  "bump-minor-pre-major": true
+}
