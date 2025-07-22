@@ -13,7 +13,7 @@ function make() {
   local base="${MAKEUP_BASE_DIR:-"/"}"
 
   # Climb up until we find a Makefile or reach the base directory
-  echo "🔎 Searching..."
+  echo "💄 Looking for Makefile in parent directories..."
   while [[ ! -e "$dir/Makefile" && "$dir" != "$base" ]]; do
     dir=$(dirname "$dir")
   done
