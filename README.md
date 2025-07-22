@@ -24,53 +24,21 @@ With the `makeup` plugin, you can now run the `make hello` command from any subd
 
 ```bash
 # ~/repos/makeup
-$  ll
-   29B  Makefile
-   128B demofolder
-
-# ~/repos/makeup
 $ cd demo/level1/level2/level3
 
 # ~/repos/makeup/demofolder/level1/level2/level3
-$ make hello
+$ make hello # This would otherwise fail
+💄 Looking for Makefile's in parent directories...
 
-🧗 cd ..
-🧗 cd ..
-🧗 cd ..
-🧗 cd ..
+"Hello, World!" # Found the root Makefile and executed the target.
 
-"Hello, World!"
-
-# ~/repos/makeup/demofolder/level1/level2/level3
-$
+$ pwd # Returns you back to where you executed the make command.
+~/repos/makeup/demo/level1/level2/level3
 ```
 
-## 🔧 Installation
+## 🛠️ Configuration
 
-This plugin is still under development. To test it:
-
-### 1. Clone the plugin
-
-```bash
-git clone https://github.com/arienshibani/makeup ~/makeup
-```
-
-### 2. Source it in your Zsh session
-
-```bash
-source ~/makeup/makeup.plugin.zsh
-```
-
-### 3. Configuration
-
-The script supports two environment variables:
-
-```sh
-MAKEUP_CONFIRM=false # true / false Whether you want a prompt which shows you which directory you run it in. The answer is stored in the current terminal session.
-MAKEUP_BASE_DIR="/" # Root directory where the script will give up.
-```
-
-Use as follows:
+You can customize the behavior of the `makeup` plugin by setting environment variables in your `.zshrc` file.
 
 ```sh
 # ~/.zshrc
@@ -79,6 +47,56 @@ Use as follows:
 export MAKEUP_CONFIRM=true
 export MAKEUP_BASE_DIR="$HOME"
 
-# Load the plugin
-source ~/path/to/makeup.plugin.zsh
 ```
+
+* `MAKEUP_CONFIRM`
+
+This variable controls whether you want a confirmation prompt before the script runs. If set to `true`, it will show you the directory where it will run the `make` command.
+
+* `MAKEUP_BASE_DIR`
+
+This variable sets the root directory where the script will stop searching for a `Makefile`. If not set, it defaults to your home directory (`$HOME`). You can set it to any directory you want the script to stop searching at.
+
+
+## 🔧 Installation
+
+### Oh-My-Zsh
+
+```bash
+git clone https://github.com/arienshibani/makeup ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/makeup
+```
+
+Add to `.zshrc`:
+```bash
+plugins=(... makeup)
+```
+
+### Antigen
+
+```bash
+antigen bundle arienshibani/makeup
+```
+
+### Zinit
+
+```bash
+zinit light arienshibani/makeup
+```
+
+### zplug
+
+```bash
+zplug "arienshibani/makeup"
+```
+
+### Manual Installation
+
+```bash
+# Clone repository
+git clone https://github.com/arienshibani/makeup ~/.makeup
+
+# Add to .zshrc
+echo "source ~/.makeup/makeup.plugin.zsh" >> ~/.zshrc
+```
+
+After installation, restart your shell or run `source ~/.zshrc`.
